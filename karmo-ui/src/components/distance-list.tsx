@@ -1,7 +1,7 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { LucideLoader2 } from "lucide-react";
-import { DataProps } from "@/types/api.interface";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { LucideLoader2 } from 'lucide-react';
+import { DataProps } from '@/types/api.interface';
 
 interface DistanceListProps {
   distanceList: DataProps;
@@ -10,7 +10,7 @@ interface DistanceListProps {
 
 export default function DistanceList({ distanceList, setPagination }: DistanceListProps) {
   return (
-    <div className="w-2/3 mt-3">
+    <div className='w-2/3 mt-3'>
       {distanceList && distanceList.data && distanceList.data.length > 0 ? (
         <InfiniteScroll
           dataLength={distanceList.data.length}
@@ -23,7 +23,7 @@ export default function DistanceList({ distanceList, setPagination }: DistanceLi
             }
           }}
           hasMore={distanceList ? distanceList.data.length < distanceList.totalData : false}
-          loader={<LucideLoader2 className="text-primary text-5xl text-center my-10 animate-spin m-auto" />}
+          loader={<LucideLoader2 className='text-primary text-5xl text-center my-10 animate-spin m-auto' />}
         >
           <Table>
             <TableHeader>
@@ -34,7 +34,7 @@ export default function DistanceList({ distanceList, setPagination }: DistanceLi
               </TableRow>
             </TableHeader>
             <TableBody>
-              {distanceList.data.map((listItem: any, index: any) => (
+              {distanceList.data.map((listItem: { list1: number; list2: number; distance: number }, index: number) => (
                 <TableRow key={index}>
                   <TableCell>{listItem.list1}</TableCell>
                   <TableCell>{listItem.list2}</TableCell>
@@ -45,7 +45,7 @@ export default function DistanceList({ distanceList, setPagination }: DistanceLi
           </Table>
         </InfiniteScroll>
       ) : (
-        <div className="text-center my-10">
+        <div className='text-center my-10'>
           <span>No distance found</span>
         </div>
       )}

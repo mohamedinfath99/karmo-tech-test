@@ -1,17 +1,16 @@
-import { ApiRequest } from "@src/common/types/api-request.type";
-import { ApiResponse } from "@src/common/types/api-response.type";
-import { calculateDistanceFromFile } from "@src/common/util/fn";
-import { promises } from "dns";
-import { Router } from "express";
-import path from "path";
+import { ApiRequest } from '@src/common/types/api-request.type';
+import { ApiResponse } from '@src/common/types/api-response.type';
+import { calculateDistanceFromFile } from '@src/common/util/fn';
+import { Router } from 'express';
+import path from 'path';
 
 const data = {
-  inputData: path.join(__dirname, "../common/data/input.txt"),
+  inputData: path.join(__dirname, '../common/data/input.txt'),
 };
 
 const journeyRouter = Router();
 
-journeyRouter.get("/calculate-distance", async (req: ApiRequest, res: ApiResponse): Promise<any> => {
+journeyRouter.get('/calculate-distance', async (req: ApiRequest, res: ApiResponse): Promise<void> => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || 10;
   const offset = (page - 1) * limit;
@@ -31,8 +30,8 @@ journeyRouter.get("/calculate-distance", async (req: ApiRequest, res: ApiRespons
     distance: Math.abs(slicedList1[i] - slicedList2[i]),
   }));
 
-  return res.json({
-    message: "success",
+  res.json({
+    message: 'success',
     totalDistance,
     totalData,
     data: paginatedResult,

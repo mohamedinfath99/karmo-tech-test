@@ -1,5 +1,5 @@
 {
-  "name": "online-learning-platform-system-api",
+  "name": "karmo-test-app",
   "version": "0.0.0",
   "scripts": {
     "build": "ts-node ./scripts/build.ts",
@@ -8,7 +8,7 @@
     "dev:hot": "nodemon --exec \"npm run dev\" --watch ./src --ext .ts",
     "lint": "eslint .",
     "start": "NODE_ENV=production node -r ./config.js ./dist",
-    "test": "NODE_ENV=test ts-node ./spec",
+    "test": "cross-env NODE_ENV=test jest",
     "test:hot": "nodemon --exec \"npm run test\" --watch ./src --watch ./spec --ext .ts",
     "type-check": "tsc --noEmit"
   },
@@ -43,6 +43,7 @@
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
     "@types/jasmine": "^5.1.7",
+    "@types/jest": "^29.5.14",
     "@types/jsonfile": "^6.1.4",
     "@types/module-alias": "^2.0.4",
     "@types/morgan": "^1.9.9",
@@ -54,9 +55,11 @@
     "find": "^0.3.0",
     "fs-extra": "^11.3.0",
     "jasmine": "^5.6.0",
+    "jest": "^29.7.0",
     "jiti": "^2.4.2",
     "nodemon": "^3.1.10",
     "supertest": "^7.1.0",
+    "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3",
